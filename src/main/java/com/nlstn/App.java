@@ -5,8 +5,15 @@ package com.nlstn;
  */
 public final class App {
 
-    public static void main(String[] args) {
+    private static LaunchConfig launchConfig;
 
+    public static void main(String[] args) throws Exception {
+        launchConfig = LaunchConfig.parse(args);
+        if (launchConfig.isEmpty()) {
+            // UI Mode
+        } else {
+            // CLI mode
+        }
     }
 
 }
