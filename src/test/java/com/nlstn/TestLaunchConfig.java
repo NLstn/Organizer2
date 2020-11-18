@@ -43,22 +43,22 @@ public class TestLaunchConfig {
         });
     }
 
-    public void testNotEmpty() {
+    @Test
+    public void testNotEmpty() throws Exception {
+
         String[] args = { "-p", "q" };
 
-        assertThrows(LaunchConfigException.class, () -> {
-            LaunchConfig config = LaunchConfig.parse(args);
-            assertEquals(config.isEmpty(), false);
-        });
+        LaunchConfig config = LaunchConfig.parse(args);
+        assertEquals(config.isEmpty(), false);
     }
 
-    public void testEmpty() {
-        String[] args = {};
+    @Test
+    public void testEmpty() throws Exception {
 
-        assertThrows(LaunchConfigException.class, () -> {
-            LaunchConfig config = LaunchConfig.parse(args);
-            assertEquals(config.isEmpty(), true);
-        });
+        String[] args = {};
+        LaunchConfig config = LaunchConfig.parse(args);
+        assertEquals(config.isEmpty(), true);
+
     }
 
 }
