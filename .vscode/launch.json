@@ -9,6 +9,7 @@
             "name": "Debug (Launch)-App<organizer2>",
             "request": "launch",
             "mainClass": "com.nlstn.App",
+            "args": "${command:SpecifyProgramArgs}",
             "projectName": "organizer2"
         }
     ]
