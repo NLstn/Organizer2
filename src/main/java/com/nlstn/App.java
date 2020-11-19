@@ -9,8 +9,6 @@ public final class App {
 
     private static LaunchConfig launchConfig;
 
-    private static Processor processor;
-
     public static void main(String[] args) throws Exception {
         launchConfig = LaunchConfig.parse(args);
         if (launchConfig.isEmpty()) {
@@ -20,12 +18,10 @@ public final class App {
             String folderPath = launchConfig.get("-f");
             String pattern = launchConfig.get("-p");
 
-            processor = new Processor();
+            Processor.setFolderPath(folderPath);
+            Processor.setPattern(pattern);
 
-            processor.setFolderPath(folderPath);
-            processor.setPattern(pattern);
-
-            processor.organize();
+            Processor.validateParams();
         }
     }
 
