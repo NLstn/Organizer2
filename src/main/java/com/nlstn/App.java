@@ -1,5 +1,7 @@
 package com.nlstn;
 
+import com.nlstn.processor.Processor;
+
 /**
  * Hello world!
  */
@@ -13,6 +15,13 @@ public final class App {
             // UI Mode
         } else {
             // CLI mode
+            String folderPath = launchConfig.get("-f");
+            String pattern = launchConfig.get("-p");
+
+            Processor.setFolderPath(folderPath);
+            Processor.setPattern(pattern);
+
+            Processor.validateParams();
         }
     }
 

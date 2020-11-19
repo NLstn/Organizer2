@@ -31,9 +31,13 @@ public class LaunchConfig {
         return config;
     }
 
-    private Map<String, String> config = new HashMap<>();
+    private final Map<String, String> config = new HashMap<>();
 
     public boolean isEmpty() {
         return config.size() == 0;
+    }
+
+    public String get(String key) {
+        return config.get(key);
     }
 }
