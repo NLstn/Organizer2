@@ -1,6 +1,8 @@
-# See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.140.1/containers/java-8/.devcontainer/base.Dockerfile
+# See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.148.1/containers/java/.devcontainer/base.Dockerfile
 
-FROM mcr.microsoft.com/vscode/devcontainers/java:0-8
+# [Choice] Java version: 11, 15
+ARG VARIANT="15"
+FROM mcr.microsoft.com/vscode/devcontainers/java:0-${VARIANT}
 
 # [Option] Install Maven
 ARG INSTALL_MAVEN="false"
@@ -18,7 +20,9 @@ RUN if [ "${INSTALL_NODE}" = "true" ]; then su vscode -c "source /usr/local/shar
 
 # [Optional] Uncomment this section to install additional OS packages.
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-     && apt-get -y install --no-install-recommends libxtst6 libxrender1
+     && apt-get -y install --no-install-recommends zsh wget
+
+RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
 
 # [Optional] Uncomment this line to install global node packages.
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
