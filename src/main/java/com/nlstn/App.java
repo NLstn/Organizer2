@@ -1,6 +1,7 @@
 package com.nlstn;
 
 import com.nlstn.processor.Processor;
+import com.nlstn.ui.MainFrame;
 
 /**
  * Hello world!
@@ -13,6 +14,7 @@ public final class App {
         launchConfig = LaunchConfig.parse(args);
         if (launchConfig.isEmpty()) {
             // UI Mode
+            new MainFrame();
         } else {
             // CLI mode
             String folderPath = launchConfig.get("-f");
