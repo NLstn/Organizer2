@@ -2,6 +2,7 @@ package com.nlstn.ui;
 
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.GridBagLayout;
 
 import javax.swing.JFrame;
 
@@ -14,6 +15,15 @@ public class MainFrame {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 600);
         centerOnScreen();
+
+        GridBagLayout layout = new GridBagLayout();
+        layout.columnWidths = new int[] { 800 };
+        layout.columnWeights = new double[] { 1.0 };
+        layout.rowHeights = new int[] { 600 };
+        layout.rowWeights = new double[] { 1.0 };
+
+        frame.getContentPane().setLayout(layout);
+
         frame.setVisible(true);
     }
 
