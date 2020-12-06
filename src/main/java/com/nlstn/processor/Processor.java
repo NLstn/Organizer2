@@ -7,10 +7,13 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
+import java.util.logging.Logger;
 
 import com.nlstn.files.ProcessableFile;
 
 public class Processor {
+
+    private static Logger logger = Logger.getLogger(Processor.class.getName());
 
     private static Path folderPath;
     private static String pattern;
@@ -18,6 +21,7 @@ public class Processor {
     private static List<ProcessableFile> files;
 
     public static void validateParams() throws Exception {
+        logger.info("Validating parameters");
         if (folderPath == null) {
             throw new InvalidProcessorParams("Folder is not set");
         }
@@ -32,7 +36,7 @@ public class Processor {
     }
 
     public static void listFiles() {
-
+        logger.info("Listing files");
         files = new ArrayList<>();
 
         try (Stream<Path> stream = Files.walk(folderPath)) {

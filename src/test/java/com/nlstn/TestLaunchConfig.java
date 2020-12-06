@@ -17,7 +17,7 @@ public class TestLaunchConfig {
     }
 
     @Test
-    public void testNoKeyFirst() {
+    public void testNoKeySecond() {
         String[] args = { "-p", "q", "p", "q" };
 
         assertThrows(LaunchConfigException.class, () -> {
@@ -35,7 +35,7 @@ public class TestLaunchConfig {
     }
 
     @Test
-    public void testNoKeySecond() {
+    public void testNoKeyFirst() {
         String[] args = { "p", "q" };
 
         assertThrows(LaunchConfigException.class, () -> {
@@ -58,6 +58,16 @@ public class TestLaunchConfig {
         String[] args = {};
         LaunchConfig config = LaunchConfig.parse(args);
         assertEquals(config.isEmpty(), true);
+
+    }
+
+    public void testOnlyKey() throws Exception {
+
+        String[] args = { "-p" };
+
+        assertThrows(LaunchConfigException.class, () -> {
+            LaunchConfig.parse(args);
+        });
 
     }
 

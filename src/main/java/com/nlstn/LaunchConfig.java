@@ -2,13 +2,21 @@ package com.nlstn;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 public class LaunchConfig {
+
+    private static Logger logger;
+
+    static {
+        logger = Logger.getLogger(LaunchConfig.class.getName());
+    }
 
     private LaunchConfig() {
     }
 
     public static LaunchConfig parse(String[] args) throws LaunchConfigException {
+        logger.config("Parsing LaunchConfig");
         LaunchConfig config = new LaunchConfig();
 
         String key = "";
@@ -28,6 +36,9 @@ public class LaunchConfig {
                 key = "";
             }
         }
+        if (!key.equals("")) {
+            throw new LaunchConfigException("Key " + key + " without value");
+        }
         return config;
     }
 
@@ -38,6 +49,7 @@ public class LaunchConfig {
     }
 
     public String get(String key) {
+        logger.config("Reading key " + key);
         return config.get(key);
     }
 }
